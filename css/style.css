@@ -1,0 +1,29 @@
+:root {
+  --offcanvas-width: 250px;
+  --topNavbarHeight: 56px;
+}
+
+.navbar-background-color {
+  background-color: #2D3337;
+}
+
+.sidebar-nav {
+  width: var(--offcanvas-width) !important;
+}
+
+@media (min-width: 992px) {
+  body {
+    overflow: auto !important;
+  }
+
+  .offcanvas-backdrop::before {
+    display: none !important;
+  }
+
+  .sidebar-nav {
+    transform: none !important;
+    visibility: visible !important;
+    top: var(--topNavbarHeight) !important;
+    height: calc(100% - var(--topNavbarHeight));
+  }
+}
