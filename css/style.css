@@ -4,7 +4,7 @@
 }
 
 .navbar-background-color {
-  background-color: #2D3337;
+  background-color: #2d3337;
 }
 
 .sidebar-nav {
@@ -20,10 +20,18 @@
     display: none !important;
   }
 
+  main {
+    margin-left: var(--offcanvas-width);
+  }
+
   .sidebar-nav {
     transform: none !important;
     visibility: visible !important;
     top: var(--topNavbarHeight) !important;
     height: calc(100% - var(--topNavbarHeight));
   }
+}
+
+#map {
+  height: 92.5vh;
 }
