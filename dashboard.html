@@ -79,36 +79,50 @@
     >
       <div class="offcanvas-body p-0">
         <nav class="navbar-dark">
-          <ul class="navbar-nav my-4">
-            <li>
-              <div class="text-muted small fw-bold text-uppercase px-3">
-                Core
-              </div>
-            </li>
+          <ul class="navbar-nav my-2 p-2">
             <li>
               <a href="#" class="nav-link px-3">
                 <span class="me-2"><i class="bi bi-speedometer2"></i></span>
                 <span>Dashboard</span>
               </a>
             </li>
-            <li class="my-4">
-              <hr class="dropdown-divider" />
-            </li>
             <li>
-              <div class="text-muted small fw-bold text-uppercase px-3">
-                Data
-              </div>
-            </li>
-            <li>
-              <a href="#" class="nav-link px-3">
+              <a href="#" class="nav-link px-3 my-1">
                 <span class="me-2"><i class="bi bi-people"> </i></span>
-                <span>Penduduk</span>
+                <span>Anggota</span>
               </a>
             </li>
             <li>
-              <a href="#" class="nav-link px-3">
-                <span class="me-2"><i class="bi bi-map"> </i></span>
-                <span>Sebaran</span>
+              <div class="bg-primary selector-color">
+                <a
+                  id="menuSebaran"
+                  onclick="menuClick()"
+                  href="#"
+                  class="nav-link px-3 my-1 active"
+                >
+                  <span class="me-2"><i class="bi bi-map"> </i></span>
+                  <span>Sebaran</span>
+                </a>
+              </div>
+            </li>
+            <li>
+              <a href="#" class="nav-link px-3 my-1">
+                <span class="me-2"><i class="bi bi-wallet"></i></span>
+                <span>Keuangan</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link px-3 my-1">
+                <span class="me-2"><i class="bi bi-calendar4-event"></i></span>
+                <span>Kegiatan</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link px-3 my-1">
+                <span class="me-2"
+                  ><i class="bi bi-file-earmark-spreadsheet"></i
+                ></span>
+                <span>Laporan</span>
               </a>
             </li>
           </ul>
@@ -120,31 +134,7 @@
       <div id="map"></div>
     </main>
 
-    <script>
-      var map = L.map("map").setView([-8.53027, 115.32878], 16);
-
-      var locations = [
-        ["LOCATION_1", -8.526324823935981, 115.32384062831701],
-        ["LOCATION_2", -8.531451451049767, 115.32725583148586],
-        ["LOCATION_3", -8.53141956548507, 115.32715625956008],
-        ["LOCATION_4", -8.530476577061219, 115.32797526884058],
-        ["LOCATION_5", -8.530632712589393, 115.32794143694336],
-      ];
-
-      for (var i = 0; i < locations.length; i++) {
-        marker = new L.marker([locations[i][1], locations[i][2]])
-          .bindPopup(locations[i][0])
-          .addTo(map);
-      }
-
-      var tiles = L.tileLayer(
-        "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-        {
-          maxZoom: 19,
-          attribution:
-            '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-        }
-      ).addTo(map);
-    </script>
+    <script src="./js/Map.js"></script>
+    <script src="./js/Menu.js"></script>
   </body>
 </html>

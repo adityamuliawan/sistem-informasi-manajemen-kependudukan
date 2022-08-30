@@ -1,5 +1,5 @@
 :root {
-  --offcanvas-width: 250px;
+  --offcanvas-width: 220px;
   --topNavbarHeight: 56px;
 }
 
@@ -34,4 +34,8 @@
 
 #map {
   height: 92.5vh;
+}
+
+.selector-color {
+  border-radius: 5px;
 }
