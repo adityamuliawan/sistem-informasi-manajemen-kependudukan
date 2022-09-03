@@ -36,7 +36,7 @@ app.get("/anggota", (req, res) => {
   let sql = "SELECT * FROM anggota";
   let query = connection.query(sql, (err, results) => {
     if (err) throw err;
-    res.render("anggota", { title: "Anggota", results: results });
+    res.render("anggota", { title: "Anggota", results: results});
   });
 });
 
