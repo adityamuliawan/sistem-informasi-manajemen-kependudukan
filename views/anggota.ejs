@@ -34,20 +34,20 @@ include('partials/sidebar') %>
       <table id="mytable" class="table table-striped table-hover table-bordered">
         <thead>
           <tr>
-            <th scope="col" class="text-center">No</th>
-            <th scope="col" class="text-center">Nama Lengkap</th>
-            <th scope="col" class="text-center">Alamat</th>
-            <th scope="col" class="text-center">Jenis Kelamin</th>
-            <th scope="col" class="text-center">Aksi</th>
+            <th scope="col" class="text-center align-middle">No</th>
+            <th scope="col" class="text-center align-middle">Nama Lengkap</th>
+            <th scope="col" class="text-center align-middle">Alamat</th>
+            <th scope="col" class="text-center align-middle">Jenis Kelamin</th>
+            <th scope="col" class="text-center align-middle">Aksi</th>
           </tr>
         </thead>
         <tbody>
           <% let number = 1; results.forEach(hasil => { %>
           <tr>
-            <th scope="row" class="text-center"><%= number %></th>
-            <td><%= hasil.nama %></td>
-            <td><%= hasil.alamat %></td>
-            <td>@mdo</td>
+            <th scope="row" class="text-center align-middle font-normal"><%= number %></th>
+            <td class="align-middle"><%= hasil.nama %></td>
+            <td class="align-middle"><%= hasil.alamat %></td>
+            <td class="text-center align-middle" ><%= hasil.jenis_kelamin %></td>
             <td class="text-center">
               <a
                 href="javascript:void(0);"

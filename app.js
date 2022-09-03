@@ -36,7 +36,7 @@ app.get("/anggota", (req, res) => {
   let sql = "SELECT * FROM anggota";
   let query = connection.query(sql, (err, results) => {
     if (err) throw err;
-    res.render("anggota", { title: "Anggota", results: results});
+    res.render("anggota", { title: "Anggota", results: results });
   });
 });
 
@@ -59,11 +59,11 @@ app.post("/save", (req, res) => {
 });
 
 // NEW route untuk delete data
-app.post('/delete',(req, res) => {
-  let sql = "DELETE FROM anggota WHERE id="+req.body.id+"";
+app.post("/delete", (req, res) => {
+  let sql = "DELETE FROM anggota WHERE id=" + req.body.id + "";
   let query = connection.query(sql, (err, results) => {
-    if(err) throw err;
-      res.redirect('/anggota');
+    if (err) throw err;
+    res.redirect("/anggota");
   });
 });
 

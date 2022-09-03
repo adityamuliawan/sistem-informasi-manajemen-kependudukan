@@ -13,9 +13,9 @@
           <li>
             <a href="/" 
             <% if (title === 'Dashboard') { %>
-            class="nav-link px-3 my-1 active"
+            class="nav-link px-3 active"
             <% } else { %>
-              class="nav-link px-3 my-1"
+              class="nav-link px-3"
               <% } %>>
               <span class="me-2"><i class="bi bi-speedometer2"></i></span>
               <span>Dashboard</span>
@@ -23,12 +23,12 @@
           </li>
         </div>
         <div <% if (title === 'Anggota') { %>
-          class="bg-primary selector-color">
+          class="bg-primary selector-color my-1">
           <% } %>
         <li>
           <a href="/anggota" 
           <% if (title === 'Anggota') { %>
-          class="nav-link px-3 my-1 active"
+          class="nav-link px-3 active"
           <% } else { %>
             class="nav-link px-3 my-1"
             <% } %>>
@@ -39,12 +39,12 @@
       </div>
 
       <div <% if (title === 'Sebaran') { %> 
-        class="bg-primary selector-color">
+        class="bg-primary selector-color my-1">
         <% } %>
           <li>
             <a href="/sebaran"
             <% if (title === 'Sebaran') { %>
-              class="nav-link px-3 my-1 active"
+              class="nav-link px-3 active"
               <% } else { %>
                  class="nav-link px-3 my-1"
                  <% } %>>
