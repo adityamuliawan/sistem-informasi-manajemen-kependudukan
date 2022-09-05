@@ -1,5 +1,6 @@
-<%- include('partials/header') %> <%- include('partials/navbar') %> <%-
-include('partials/sidebar') %>
+<%- include('partials/header') %> 
+<%- include('partials/navbar') %>
+<%- include('partials/sidebar') %>
 
 <div class="card" style="width: 100wh">
   <ul class="list-group list-group-flush">
@@ -31,7 +32,10 @@ include('partials/sidebar') %>
       </form>
 
       <!-- Tabel anggota-->
-      <table id="mytable" class="table table-striped table-hover table-bordered">
+      <table
+        id="mytable"
+        class="table table-striped table-hover table-bordered"
+      >
         <thead>
           <tr>
             <th scope="col" class="text-center align-middle">No</th>
@@ -44,17 +48,19 @@ include('partials/sidebar') %>
         <tbody>
           <% let number = 1; results.forEach(hasil => { %>
           <tr>
-            <th scope="row" class="text-center align-middle font-normal"><%= number %></th>
+            <th scope="row" class="text-center align-middle font-normal">
+              <%= number %>
+            </th>
             <td class="align-middle"><%= hasil.nama %></td>
             <td class="align-middle"><%= hasil.alamat %></td>
-            <td class="text-center align-middle" ><%= hasil.jenis_kelamin %></td>
+            <td class="text-center align-middle"><%= hasil.jenis_kelamin %></td>
             <td class="text-center">
               <a
                 href="javascript:void(0);"
-                class="btn btn-sm btn-info edit"
-                data-id="{{ product_id }}"
-                data-product_name="{{ product_name }}"
-                data-product_price="{{ product_price }}"
+                class="btn btn-sm btn-warning edit"
+                data-id="<%= hasil.id %>"
+                data-nama-anggota="<%= hasil.nama %>"
+                data-alamat-anggota="<%= hasil.alamat %>"
                 >Edit</a
               >
               <a
@@ -129,10 +135,7 @@ include('partials/sidebar') %>
                     required
                   />
                 </div>
-
               </div>
-
-
 
               <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Simpan</button>
@@ -142,6 +145,119 @@ include('partials/sidebar') %>
         </div>
       </form>
 
+      <!-- Modal tambah -->
+      <form action="/update" method="post">
+        <div
+          class="modal fade"
+          id="EditModal"
+          aria-hidden="true"
+          aria-labelledby="exampleModalToggleLabel"
+          tabindex="-1"
+        >
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalToggleLabel">
+                  Edit Anggota
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    name="nama"
+                    class="form-control nama-anggota"
+                    placeholder="Nama Lengkap"
+                    required
+                  />
+                </div>
+                <div class="form-group pt-3">
+                  <input
+                    type="text"
+                    name="alamat"
+                    class="form-control alamat-anggota"
+                    placeholder="Alamat"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="modal-footer">
+                <input type="hidden" name="id" class="id-anggota-ubah" />
+
+                <button type="submit" class="btn btn-warning">Ubah</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <!-- Modal Hapus -->
+      <form action="/delete" method="post">
+        <div
+          class="modal fade"
+          id="DeleteModal"
+          aria-hidden="true"
+          aria-labelledby="exampleModalToggleLabel"
+          tabindex="-1"
+        >
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalToggleLabel">
+                  Hapus Anggota
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <strong>Anda yakin ingin menghapus?</strong>
+              </div>
+
+              <div class="modal-footer">
+                <input
+                  type="hidden"
+                  name="id"
+                  class="form-control id-anggota-hapus"
+                  required
+                />
+                <button type="submit" class="btn btn-danger">Hapus</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <script>
+        $(document).ready(function () {
+          //tampilkan data ke modal untuk edit
+          $("#mytable").on("click", ".edit", function () {
+            var id_anggota = $(this).data("id");
+            var nama_anggota = $(this).data("nama-anggota");
+            var alamat_anggota = $(this).data("alamat-anggota");
+            $("#EditModal").modal("show");
+            $(".nama-anggota").val(nama_anggota);
+            $(".alamat-anggota").val(alamat_anggota);
+            $(".id-anggota-ubah").val(id_anggota);
+          });
+          //tampilkan modal hapus record
+          $("#mytable").on("click", ".delete", function () {
+            var id_anggota = $(this).data("id");
+            $("#DeleteModal").modal("show");
+            $(".id-anggota-hapus").val(id_anggota);
+          });
+        });
+      </script>
     </li>
   </ul>
 </div>

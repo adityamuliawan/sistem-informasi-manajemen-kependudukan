@@ -58,6 +58,21 @@ app.post("/save", (req, res) => {
   });
 });
 
+//NEW route untuk update data
+app.post("/update", (req, res) => {
+  let sql =
+    "UPDATE anggota SET nama='" +
+    req.body.nama +
+    "', alamat='" +
+    req.body.alamat +
+    "' WHERE id=" +
+    req.body.id;
+  let query = connection.query(sql, (err, results) => {
+    if (err) throw err;
+    res.redirect("/anggota");
+  });
+});
+
 // NEW route untuk delete data
 app.post("/delete", (req, res) => {
   let sql = "DELETE FROM anggota WHERE id=" + req.body.id + "";
