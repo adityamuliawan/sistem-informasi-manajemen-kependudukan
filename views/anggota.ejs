@@ -41,7 +41,7 @@
             <th scope="col" class="text-center align-middle">No</th>
             <th scope="col" class="text-center align-middle">Nama Lengkap</th>
             <th scope="col" class="text-center align-middle">Alamat</th>
-            <th scope="col" class="text-center align-middle">Jenis Kelamin</th>
+            <th scope="col" class="text-center align-middle">Tempek</th>
             <th scope="col" class="text-center align-middle">Aksi</th>
           </tr>
         </thead>
@@ -53,7 +53,18 @@
             </th>
             <td class="align-middle"><%= hasil.nama %></td>
             <td class="align-middle"><%= hasil.alamat %></td>
-            <td class="text-center align-middle"><%= hasil.jenis_kelamin %></td>
+            <td class="text-center align-middle">
+              <div <% if (hasil.tempek === 'Kaja Kauh') { %> 
+              class="selector-color kaja-kauh-bg-color"
+              <% } else if (hasil.tempek === 'Kaja Kangin') { %>
+                class="selector-color kaja-kangin-bg-color"
+                <% } else if (hasil.tempek === 'Kelod Kauh') { %>
+                  class="selector-color kelod-kauh-bg-color"
+                  <% } else if (hasil.tempek === 'Kelod Kangin') { %>
+                    class="selector-color kelod-kangin-bg-color"
+              <% } %>>
+                <%= hasil.tempek %>
+            </div></td>
             <td class="text-center">
               <a
                 href="javascript:void(0);"
@@ -61,6 +72,7 @@
                 data-id="<%= hasil.id %>"
                 data-nama-anggota="<%= hasil.nama %>"
                 data-alamat-anggota="<%= hasil.alamat %>"
+                data-tempek-anggota="<%= hasil.tempek %>"
                 >Edit</a
               >
               <a
@@ -135,7 +147,16 @@
                     required
                   />
                 </div>
+                <div class="form-group pt-3">
+                  <select class="form-select form-group" name="tempek" aria-label="Default select example">
+                    <option value="Kaja Kauh" selected>Kaja Kauh</option>
+                    <option value="Kaja Kangin">Kaja Kangin</option>
+                    <option value="Kelod Kauh">Kelod Kauh</option>
+                    <option value="Kelod Kangin">Kelod Kangin</option>
+                  </select>
+                </div>
               </div>
+
 
               <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Simpan</button>
@@ -145,7 +166,7 @@
         </div>
       </form>
 
-      <!-- Modal tambah -->
+      <!-- Modal update -->
       <form action="/update" method="post">
         <div
           class="modal fade"
@@ -185,6 +206,14 @@
                     placeholder="Alamat"
                     required
                   />
+                </div>
+                <div class="form-group pt-3">
+                  <select class="form-select form-group tempek-anggota" name="tempek" aria-label="Default select example">
+                    <option value="Kaja Kauh" selected>Kaja Kauh</option>
+                    <option value="Kaja Kangin">Kaja Kangin</option>
+                    <option value="Kelod Kauh">Kelod Kauh</option>
+                    <option value="Kelod Kangin">Kelod Kangin</option>
+                  </select>
                 </div>
               </div>
 
@@ -245,9 +274,11 @@
             var id_anggota = $(this).data("id");
             var nama_anggota = $(this).data("nama-anggota");
             var alamat_anggota = $(this).data("alamat-anggota");
+            var tempek_anggota = $(this).data("tempek-anggota");
             $("#EditModal").modal("show");
             $(".nama-anggota").val(nama_anggota);
             $(".alamat-anggota").val(alamat_anggota);
+            $(".tempek-anggota").val(tempek_anggota);
             $(".id-anggota-ubah").val(id_anggota);
           });
           //tampilkan modal hapus record

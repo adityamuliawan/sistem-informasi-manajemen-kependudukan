@@ -56,3 +56,23 @@
 .font-normal {
   font-weight: normal;
 }
+
+.kaja-kauh-bg-color {
+  background-color: #36B649;
+  color: white;
+}
+
+.kaja-kangin-bg-color {
+  background-color: #0072BD;
+  color: white;
+}
+
+.kelod-kauh-bg-color {
+  background-color: #F58319;
+  color: white;
+}
+
+.kelod-kangin-bg-color {
+  background-color: #F8B7C3;
+  color: white;
+}
