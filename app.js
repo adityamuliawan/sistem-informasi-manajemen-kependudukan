@@ -50,7 +50,7 @@ app.get("/sebaran", (req, res) => {
 
 // NEW route untuk insert data
 app.post("/save", (req, res) => {
-  let data = { nama: req.body.nama, alamat: req.body.alamat, tempek: req.body.tempek };
+  let data = { nama: req.body.nama, alamat: req.body.alamat, tempek: req.body.tempek, jenis_kelamin: req.body.jeniskelamin };
   let sql = "INSERT INTO anggota SET ?";
   let query = connection.query(sql, data, (err, results) => {
     if (err) throw err;
